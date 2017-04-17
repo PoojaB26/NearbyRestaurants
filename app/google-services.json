@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "620819466251",
+    "project_id": "firebase-nearbyrestaurants"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620819466251:android:61e2cda53394ea6f",
+        "android_client_info": {
+          "package_name": "poojab26.nearbyrestaurants"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620819466251-2n46c3bmpc3ksouf4d288b0n0jk8kccf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "poojab26.nearbyrestaurants",
+            "certificate_hash": "edd22c52d921469083e31b21c996130dd0905bda"
+          }
+        },
+        {
+          "client_id": "620819466251-b9ah3fnd10517bsqu6g6b9o9kdia9sjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASOEO1IYXpHpv807wWdNCaLf5i6NAY2Mk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
