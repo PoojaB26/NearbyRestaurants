@@ -105,7 +105,7 @@ public class LocationReceiver extends AppCompatActivity implements
             mLongitudeText.setText(String.format("%s: %f", mLongitudeLabel,
                     mLastLocation.getLongitude()));
         } else {
-            Log.d("location", "no ocation detected");
+            Log.d("location", "no location detected");
         }
     }
 
