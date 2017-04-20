@@ -5,18 +5,18 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class NearbyRestaurant {
+public class ZomatoEvent {
 
-    @SerializedName("restaurant")
+    @SerializedName("event")
     @Expose
-    private Restaurant restaurant;
+    private Event event;
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public Event getEvent() {
+        return event;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     @Override

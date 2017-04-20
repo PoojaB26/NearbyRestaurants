@@ -3,53 +3,60 @@ package poojab26.nearbyrestaurants.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Location {
 
-    @SerializedName("address")
+    @SerializedName("entity_type")
     @Expose
-    private String address;
-    @SerializedName("locality")
+    private String entityType;
+    @SerializedName("entity_id")
     @Expose
-    private String locality;
-    @SerializedName("city")
+    private Integer entityId;
+    @SerializedName("title")
     @Expose
-    private String city;
+    private String title;
     @SerializedName("latitude")
     @Expose
     private String latitude;
     @SerializedName("longitude")
     @Expose
     private String longitude;
-    @SerializedName("zipcode")
+    @SerializedName("city_id")
     @Expose
-    private String zipcode;
+    private Integer cityId;
+    @SerializedName("city_name")
+    @Expose
+    private String cityName;
     @SerializedName("country_id")
     @Expose
-    private String countryId;
+    private Integer countryId;
+    @SerializedName("country_name")
+    @Expose
+    private String countryName;
 
-    public String getAddress() {
-        return address;
+    public String getEntityType() {
+        return entityType;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEntityType(String entityType) {
+        this.entityType = entityType;
     }
 
-    public String getLocality() {
-        return locality;
+    public Integer getEntityId() {
+        return entityId;
     }
 
-    public void setLocality(String locality) {
-        this.locality = locality;
+    public void setEntityId(Integer entityId) {
+        this.entityId = entityId;
     }
 
-    public String getCity() {
-        return city;
+    public String getTitle() {
+        return title;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getLatitude() {
@@ -68,20 +75,41 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public Integer getCityId() {
+        return cityId;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 
-    public String getCountryId() {
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public Integer getCountryId() {
         return countryId;
     }
 
-    public void setCountryId(String countryId) {
+    public void setCountryId(Integer countryId) {
         this.countryId = countryId;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

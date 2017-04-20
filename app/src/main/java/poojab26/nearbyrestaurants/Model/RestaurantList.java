@@ -4,13 +4,15 @@ package poojab26.nearbyrestaurants.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.util.List;
 
 public class RestaurantList {
 
-    @SerializedName("locality")
+    @SerializedName("location")
     @Expose
-    private Locality locality;
+    private Location location;
     @SerializedName("popularity")
     @Expose
     private Popularity popularity;
@@ -21,12 +23,12 @@ public class RestaurantList {
     @Expose
     private List<NearbyRestaurant> nearbyRestaurants = null;
 
-    public Locality getLocality() {
-        return locality;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLocality(Locality locality) {
-        this.locality = locality;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public Popularity getPopularity() {
@@ -51,6 +53,11 @@ public class RestaurantList {
 
     public void setNearbyRestaurants(List<NearbyRestaurant> nearbyRestaurants) {
         this.nearbyRestaurants = nearbyRestaurants;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

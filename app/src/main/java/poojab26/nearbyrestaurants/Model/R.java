@@ -5,18 +5,18 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class NearbyRestaurant {
+public class R {
 
-    @SerializedName("restaurant")
+    @SerializedName("res_id")
     @Expose
-    private Restaurant restaurant;
+    private Integer resId;
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public Integer getResId() {
+        return resId;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setResId(Integer resId) {
+        this.resId = resId;
     }
 
     @Override
