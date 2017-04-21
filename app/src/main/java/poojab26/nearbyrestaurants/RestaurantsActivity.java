@@ -52,9 +52,7 @@ public class RestaurantsActivity extends AppCompatActivity{
 
         }*/
 
-     /*   lat = getIntent().getExtras().getString("Lat");
-        lon = getIntent().getExtras().getString("Lon");
-        Log.d("lat", lat);*/
+     /*   */
         recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
         mAdapter = new RDataAdapter(getApplicationContext(), R_List);
 
@@ -62,6 +60,9 @@ public class RestaurantsActivity extends AppCompatActivity{
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+        lat = getIntent().getExtras().getString("Lat");
+        lon = getIntent().getExtras().getString("Lon");
+        Log.d("latRrest", lat +" " + lon);
 
         loadRestaurantListJSON(lat, lon);
 
@@ -69,8 +70,9 @@ public class RestaurantsActivity extends AppCompatActivity{
 
     private void loadRestaurantListJSON(String lat, String lon) {
         apiInterface = APIClient.getClient().create(RequestInterface.class);
+        Log.d("latRrest", lat +" " + lon);
 
-        Call<RestaurantList> call = apiInterface.getRestaurantList("20.348296","85.821059");
+        Call<RestaurantList> call = apiInterface.getRestaurantList(lat,lon);
         call.enqueue(new Callback<RestaurantList>() {
             @Override
             public void onResponse(Call<RestaurantList> call, Response<RestaurantList> response) {
