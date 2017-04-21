@@ -57,7 +57,6 @@ public class RDataAdapter extends RecyclerView.Adapter<RDataAdapter.MyViewHolder
 
         Picasso.with(context).load(r_details.getRPhoto()).into(holder.photo);
 
-       // holder.photo.setText(r_details.getRPhoto());
         holder.cuisine.setText(r_details.getRCuisine());
     }
 

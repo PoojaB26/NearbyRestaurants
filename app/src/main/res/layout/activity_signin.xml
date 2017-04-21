@@ -55,12 +55,14 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/button_optional_action"
-            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            android:id="@+id/btn_restaurants"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="15dp"
             android:visibility="gone"
-            tools:text="Optional Action"
+            android:textColor="#fff"
+            android:background="@color/blue_grey_500"
+            tools:text="See Nearby Restaurants"
             tools:visibility="visible" />
 
     </LinearLayout>

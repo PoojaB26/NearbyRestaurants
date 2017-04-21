@@ -29,7 +29,8 @@ public class RestaurantsActivity extends AppCompatActivity{
     private List<R_Details> R_List = new ArrayList<>();
     private RecyclerView recyclerView;
     private RDataAdapter mAdapter;
-
+    public static final String MY_PREFS_NAME = "GPSLocation";
+    String lat, lon;
    /* private ArrayList<AllReview> reviewData;
     private ArrayList<Photo> photoData;*/
    /* private String reviewData;
@@ -43,6 +44,17 @@ public class RestaurantsActivity extends AppCompatActivity{
         setContentView(R.layout.activity_restaurant);
         responseText = (TextView) findViewById(R.id.json);
 
+       /* SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        String restoredText = prefs.getString("text", null);
+        if (restoredText != null) {
+            lat = prefs.getString("lat", "No name defined");//"No name defined" is the default value.
+            lon = prefs.getString("lon", "No name defined");//"No name defined" is the default value.
+
+        }*/
+
+     /*   lat = getIntent().getExtras().getString("Lat");
+        lon = getIntent().getExtras().getString("Lon");
+        Log.d("lat", lat);*/
         recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
         mAdapter = new RDataAdapter(getApplicationContext(), R_List);
 
@@ -51,15 +63,14 @@ public class RestaurantsActivity extends AppCompatActivity{
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        loadRestaurantListJSON();
-
+        loadRestaurantListJSON(lat, lon);
 
     }
 
-    private void loadRestaurantListJSON() {
+    private void loadRestaurantListJSON(String lat, String lon) {
         apiInterface = APIClient.getClient().create(RequestInterface.class);
 
-        Call<RestaurantList> call = apiInterface.getRestaurantList("20.358824","85.833266");
+        Call<RestaurantList> call = apiInterface.getRestaurantList("20.348296","85.821059");
         call.enqueue(new Callback<RestaurantList>() {
             @Override
             public void onResponse(Call<RestaurantList> call, Response<RestaurantList> response) {
@@ -93,12 +104,5 @@ public class RestaurantsActivity extends AppCompatActivity{
         });
     }
 
-    private void prepareData() {
-        R_Details restModel = new R_Details("Mad Max: Fury Road", "Action & Adventure", "2015");
-        R_List.add(restModel);
-        restModel = new R_Details("Mad Max: Fury Road", "Action & Adventure", "2015");
-        R_List.add(restModel);
 
-        mAdapter.notifyDataSetChanged();
-    }
 }

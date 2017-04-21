@@ -4,6 +4,7 @@ package poojab26.nearbyrestaurants;
  * Created by pblead26 on 18-Apr-17.
  */
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,8 +27,9 @@ import com.google.android.gms.location.LocationServices;
  */
 public class LocationReceiver extends AppCompatActivity implements
         ConnectionCallbacks, OnConnectionFailedListener {
-
+    public String lat, lon;
     protected static final String TAG = "MainActivity";
+    public static final String MY_PREFS_NAME = "GPSLocation";
 
     /**
      * Provides the entry point to Google Play services.
@@ -43,7 +45,6 @@ public class LocationReceiver extends AppCompatActivity implements
     protected String mLongitudeLabel;
     protected TextView mLatitudeText;
     protected TextView mLongitudeText;
-
 
 
     @Override
@@ -100,10 +101,26 @@ public class LocationReceiver extends AppCompatActivity implements
             Log.d("location error", e.toString()); }
 
         if (mLastLocation != null) {
-            mLatitudeText.setText(String.format("%s: %f", mLatitudeLabel,
+          /* mLatitudeText.setText(String.format("%s: %f", mLatitudeLabel,
                     mLastLocation.getLatitude()));
+
             mLongitudeText.setText(String.format("%s: %f", mLongitudeLabel,
-                    mLastLocation.getLongitude()));
+                    mLastLocation.getLongitude()));*/
+            /*Log.d("Lat", String.format("%s: %f",
+                    mLastLocation.getLatitude()));
+            Log.d("Lon", String.format("%s: %f",
+                    mLastLocation.getLongitude()));*/
+          //  double Latitude = Double.parseDouble(dennis);
+
+            lat = String.format("%.2f", mLastLocation.getLatitude());
+            lon = String.format("%.2f",
+                    mLastLocation.getLongitude());
+
+
+            Intent projectOnMap = new Intent(LocationReceiver.this, MapsActivity.class);
+            projectOnMap.putExtra("Lat", lat);
+            projectOnMap.putExtra("Lon", lon);
+            startActivity(projectOnMap);
         } else {
             Log.d("location", "no location detected");
         }

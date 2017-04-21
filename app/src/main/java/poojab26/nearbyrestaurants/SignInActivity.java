@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
@@ -38,6 +39,8 @@ public class SignInActivity extends AppCompatActivity implements
     private TextView mStatusTextView;
     private ProgressDialog mProgressDialog;
 
+    Button btnRestaurants;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,14 @@ public class SignInActivity extends AppCompatActivity implements
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
+        btnRestaurants = (Button) findViewById(R.id.btn_restaurants);
+        btnRestaurants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent findGPSLocation = new Intent(SignInActivity.this, LocationReceiver.class);
+                startActivity(findGPSLocation);
+            }
+        });
 
         // [START configure_signin]
         // Configure sign-in to request the user's ID, email address, and basic
@@ -191,6 +202,7 @@ public class SignInActivity extends AppCompatActivity implements
         if (signedIn) {
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+            btnRestaurants.setVisibility((View.VISIBLE));
         } else {
             mStatusTextView.setText(R.string.signed_out);
 
