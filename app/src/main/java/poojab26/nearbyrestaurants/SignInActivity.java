@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -34,11 +35,12 @@ public class SignInActivity extends AppCompatActivity implements
 
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
+    public static final String MY_PREFS_NAME = "AccountInfo";
 
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
     private ProgressDialog mProgressDialog;
-
+    public GoogleSignInAccount acct;
     Button btnRestaurants;
 
     @Override
@@ -130,7 +132,7 @@ public class SignInActivity extends AppCompatActivity implements
         Log.d(TAG, "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
+            acct = result.getSignInAccount();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
             updateUI(true);
         } else {
@@ -202,7 +204,17 @@ public class SignInActivity extends AppCompatActivity implements
         if (signedIn) {
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
-            btnRestaurants.setVisibility((View.VISIBLE));
+         //   btnRestaurants.setVisibility((View.VISIBLE));
+
+            Log.d("Name", acct.getDisplayName());
+      /*      SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+            editor.putString("Name", acct.getDisplayName());
+            editor.commit();
+*/
+            Toast.makeText(getApplicationContext(), "Welcome " + acct.getDisplayName(), Toast.LENGTH_LONG).show();
+            Intent findGPSLocation = new Intent(SignInActivity.this, LocationReceiver.class);
+            startActivity(findGPSLocation);
+
         } else {
             mStatusTextView.setText(R.string.signed_out);
 

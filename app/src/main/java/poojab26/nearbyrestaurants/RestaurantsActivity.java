@@ -23,14 +23,14 @@ import retrofit2.Response;
  */
 
 public class RestaurantsActivity extends AppCompatActivity{
-    TextView responseText;
+    TextView tvDisplayName;
     RequestInterface apiInterface;
     ArrayList<String> restaurantIDList;
     private List<R_Details> R_List = new ArrayList<>();
     private RecyclerView recyclerView;
     private RDataAdapter mAdapter;
-    public static final String MY_PREFS_NAME = "GPSLocation";
-    String lat, lon;
+    public static final String MY_PREFS_NAME = "AccountInfo";
+    String lat, lon, displayName;
    /* private ArrayList<AllReview> reviewData;
     private ArrayList<Photo> photoData;*/
    /* private String reviewData;
@@ -42,17 +42,7 @@ public class RestaurantsActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
-        responseText = (TextView) findViewById(R.id.json);
-
-       /* SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String restoredText = prefs.getString("text", null);
-        if (restoredText != null) {
-            lat = prefs.getString("lat", "No name defined");//"No name defined" is the default value.
-            lon = prefs.getString("lon", "No name defined");//"No name defined" is the default value.
-
-        }*/
-
-     /*   */
+      //  tvDisplayName = (TextView) findViewById(R.id.displayName);
         recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
         mAdapter = new RDataAdapter(getApplicationContext(), R_List);
 
@@ -63,7 +53,6 @@ public class RestaurantsActivity extends AppCompatActivity{
         lat = getIntent().getExtras().getString("Lat");
         lon = getIntent().getExtras().getString("Lon");
         Log.d("latRrest", lat +" " + lon);
-
         loadRestaurantListJSON(lat, lon);
 
     }
