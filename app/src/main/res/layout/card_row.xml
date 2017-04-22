@@ -15,20 +15,33 @@
         <TextView
             android:id="@+id/tv_name"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="1dp"
             android:textSize="18sp"
+            android:text="Name"
+            android:textColor="#212121"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold" />
-        <ImageView
-            android:id="@+id/tv_photo"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_margin="5dp"/>
-        <TextView
-            android:id="@+id/tv_cuisine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:id="@+id/detailsLayout">
+            <TextView
+                android:id="@+id/tv_cuisine"
+                android:text="Cusine"
+                android:textColor="#4796c7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/tv_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

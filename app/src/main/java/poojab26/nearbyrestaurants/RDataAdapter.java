@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -27,13 +28,30 @@ public class RDataAdapter extends RecyclerView.Adapter<RDataAdapter.MyViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, cuisine;
         public ImageView photo;
+        public LinearLayout detailsLayout;
 
         public MyViewHolder(View view) {
             super(view);
             name = (TextView) view.findViewById(R.id.tv_name);
             photo = (ImageView) view.findViewById(R.id.tv_photo);
             cuisine = (TextView) view.findViewById(R.id.tv_cuisine);
-        }
+            detailsLayout = (LinearLayout) view.findViewById(R.id.detailsLayout);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //boolean isLayoutVisible = detailsLayout.getVisibility();
+
+                    if(detailsLayout.getVisibility() == View.VISIBLE){
+                        detailsLayout.setVisibility(View.GONE);
+                    }
+                    else{
+                        detailsLayout.setVisibility(View.VISIBLE);
+                    }
+
+
+                }
+            });        }
     }
 
 
