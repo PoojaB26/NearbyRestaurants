@@ -54,6 +54,7 @@ public class RestaurantsActivity extends AppCompatActivity{
         lon = getIntent().getExtras().getString("Lon");
         Log.d("latRrest", lat +" " + lon);
         loadRestaurantListJSON(lat, lon);
+        Log.d("test", "making changes");
 
     }
 
